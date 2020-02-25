@@ -78,31 +78,31 @@ function renderCircles(circlesGroup, newXScale, chosenXAxis, newYScale, chosenYA
     return circlesGroup;
   }
 // XXXXXXXXXXXfunction used for updating circles group with new tooltip
-// function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
-//     if (chosenXAxis === "poverty") {
-//       var label = "Poverty %:";
-//     }
-//     else if (chosenXAxis === "age") {
-//       var label = "age";
-//     }
-//     else { var label = "income"}
-//     var toolTip = d3.tip()
-//       .attr("class", "tooltip")
-//       .offset([80, -60])
-//       .html(function(d) {
-//         return (`${d.abbr}`);
-//       });
-//     circlesGroup.call(toolTip);
+function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
+    // if (chosenXAxis === "poverty") {
+    //   var Xlabel = "Poverty %:";
+    // }
+    // else if (chosenXAxis === "age") {
+    //   var Xlabel = "age";
+    // }
+    // else { var Xlabel = "income"};
+    var toolTip = d3.tip()
+      .attr("class", "tooltip")
+      .offset([80, -60])
+      .html( `${d.abbr}`);
+        // return (`${d.abbr}<br>${label} ${d[chosenXAxis]}`);
+      
+    circlesGroup.call(toolTip);
   
-//     circlesGroup.on("mouseover", function(data) {
-//       toolTip.show(data);
-//     })
-//       // on mouseout event
-//       .on("mouseout", function(data, index) {
-//         toolTip.hide(data);
-//       });
-//     return circlesGroup;
-//   }  
+    circlesGroup.on("mouseover", function(data) {
+      toolTip.show(data);
+    })
+      // on mouseout event
+      .on("mouseout", function(data, index) {
+        toolTip.hide(data);
+      });
+    return circlesGroup;
+  }  
 //   xxxxxxxxxxxxxxxx
 // Retrieve data from the CSV file and execute everything below
 d3.csv("../../assets/data/data.csv").then(function(data, err) {
